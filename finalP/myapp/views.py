@@ -7,8 +7,8 @@ def index(request):
     return render(request, "myapp/index.html")
 
 
-# def greet(request, name):
-#     return render(request, "test/greet.html", {
-#         "name": name.title()
+def greet(request, name):
+    return render(request, "myapp/greet.html", {
+        "name": name.title()
 
-#     })
+    })
