@@ -1,0 +1,22 @@
+{%extends 'myapp/layout.html'%}
+
+{%block body%}
+
+{% if message %}
+<h2>{{message}}</h2>
+{%endif%}
+
+
+<form action="{% url 'register' %}" method="POST">
+    {%csrf_token%}
+    <label class="form-label" for="unsername">Username</label>
+    <input class="form-control" type="text" name="username" id="username" autofocus autocomplete="off">
+    <label class="form-label" for="email">E-Mail</label>
+    <input class="form-control" type="email" name="email" id="email" autocomplete="off">
+    <label class="form-label" for="password">Password</label>
+    <input class="form-control" type="password" name="password" id="password">
+    <label class="form-label" for="confirmation">Confirm Password</label>
+    <input class="form-control" type="password" name="confirmation" id="confirmation">
+    <input class="btn btn-primary" type="submit" value="Register">
+</form>
+{%endblock%}
