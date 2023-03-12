@@ -72,3 +72,8 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "myapp/register.html")
+
+
+@login_required(login_url='/login')
+def profile(request):
+    return render(request, "myapp/profile.html")
