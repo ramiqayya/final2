@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.db import IntegrityError
@@ -5,8 +6,33 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 
+from requests import Request, Session
+from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
+import json
+
+from dotenv import load_dotenv
 from .models import User
 # Create your views here.
+
+# This example uses Python 2.7 and the python-request library.
+load_dotenv()
+print(os.getenv("API_KEY"))
+print(os.getenv("EMAIL"))
+
+
+url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
+parameters = {
+    'start': '1',
+    'limit': '5',
+    'convert': 'USD'
+}
+headers = {
+    'Accepts': 'application/json',
+    'X-CMC_PRO_API_KEY': os.getenv("API_KEY"),
+}
+
+session = Session()
+session.headers.update(headers)
 
 
 @login_required(login_url='/login')
@@ -76,4 +102,11 @@ def register(request):
 
 @login_required(login_url='/login')
 def profile(request):
+    try:
+        response = session.get(url, params=parameters)
+        data = json.loads(response.text)
+        print(data['data'][1])
+    except (ConnectionError, Timeout, TooManyRedirects) as e:
+        print(e)
+
     return render(request, "myapp/profile.html")
