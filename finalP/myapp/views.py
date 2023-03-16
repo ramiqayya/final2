@@ -1,4 +1,5 @@
 import os
+from dotenv import load_dotenv
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.db import IntegrityError
@@ -9,12 +10,12 @@ import requests
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import json
+from .forms import addCredit
 
-from dotenv import load_dotenv
 from .models import User
 # Create your views here.
 
-# This example uses Python 2.7 and the python-request library.
+
 load_dotenv()
 print(os.getenv("API_KEY"))
 

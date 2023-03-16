@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {%extends 'myapp/layout.html'%}
+{% load humanize %}
 {%block body%}
 <h1>Willkommen</h1>
 
@@ -22,7 +23,7 @@
         <tr>
             <th scope="row">1</th>
             <td>{{1stname}} ({{1stsymbol}})</td>
-            <td>${{1stprice}}</td>
+            <td>${{1stprice|floatformat:2|intcomma}}</td>
             <td>{{1stpchange1h}}%</td>
             <td>{{1stpchange24h}}%</td>
             <td>{{1stpchange7d}}%</td>
@@ -112,26 +113,8 @@
 
     </tbody>
 </table>
-<p>: $<strong></strong> 1h%: <b></b> 24h%:
-    <b></b> 7d%: <b>{{1stpchange7d}}</b> Market Cap: <b></b>
-</p>
-<p>{{2ndname}} ({{2ndsymbol}}): $<strong>{{2ndprice}}</strong></p>
-<p>{{3rdname}} ({{3rdsymbol}}): $<strong>{{3rdprice}}</strong></p>
-<p>{{4thname}} ({{4thsymbol}}): $<strong>{{4thprice}}</strong></p>
-<p>{{5thname}} ({{5thsymbol}}): $<strong>{{5thprice}}</strong></p>
-<p>{{6thname}} ({{6thsymbol}}): $<strong>{{6thprice}}</strong></p>
-<p>{{7thname}} ({{7thsymbol}}): $<strong>{{7thprice}}</strong></p>
-<p>{{8thname}} ({{8thsymbol}}): $<strong>{{8thprice}}</strong></p>
-<p>{{9thname}} ({{9thsymbol}}): $<strong>{{9thprice}}</strong></p>
-<p>{{10thname}} ({{10thsymbol}}): $<strong>{{10thprice}}</strong></p>
 
 
 
-<!-- <form action="{%url 'index'%}" method="POST">
-    {%csrf_token%}
-    <input type="text" name="symbol" autofocus autocomplete="off">
-    <input type="submit" value="Check Price?">
-
-</form> -->
 
 {%endblock%}
