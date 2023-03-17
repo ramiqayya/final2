@@ -10,6 +10,7 @@ urlpatterns = [
     path("register", views.register, name="register"),
     path("profile", views.profile, name="profile"),
     path("admin", admin.site.urls),
+    path("trade", views.trade, name="trade"),
 
     path("<str:name>", views.greet, name="swade"),
 

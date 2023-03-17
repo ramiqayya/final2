@@ -232,6 +232,10 @@ def profile(request):
     })
 
 
+def trade(request):
+    return render(request, "myapp/trade.html")
+
+
 def lookup(*symbols):
     url = 'https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?symbol='
     for symbol in symbols:
