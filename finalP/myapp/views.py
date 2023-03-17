@@ -10,8 +10,9 @@ import requests
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import json
-from .forms import addCredit
+from .forms import AddCredit
 
+from django.core.serializers import serialize
 from .models import User
 # Create your views here.
 
@@ -187,8 +188,48 @@ def register(request):
 
 @login_required(login_url='/login')
 def profile(request):
+    thisUser = User.objects.get(pk=request.user.pk)
+    # serialized_user = serialize('json', [thisUser,])
+    # json_user = json.loads(serialized_user)[0]['fields']
+    # print(json.dumps(json_user, indent=4))
+    balance = thisUser.balance
+    print(thisUser)
 
-    return render(request, "myapp/profile.html")
+    if request.method == "POST":
+        addCredit = AddCredit(request.POST)
+        if addCredit.is_valid():
+            amount = addCredit.cleaned_data['amount']
+            choice = addCredit.cleaned_data['transaction_type']
+            print(amount, choice)
+            if amount < 0:
+                return render(request, "myapp/error.html", {
+                    "code": "403",
+                    "message": "Amount must be above 0"
+                })
+
+            if choice == 'deposit':
+
+                thisUser.balance = thisUser.balance+amount
+                thisUser.save()
+                return HttpResponseRedirect(reverse('profile'))
+            else:
+                if thisUser.balance > amount:
+                    thisUser.balance = thisUser.balance-amount
+                    thisUser.save()
+                elif thisUser.balance < amount:
+                    return render(request, "myapp/error.html", {
+                        "code": "403",
+                        "message": "Not enough balance to withdraw"
+                    })
+
+                return HttpResponseRedirect(reverse('profile'))
+
+    addCredit = AddCredit()
+
+    return render(request, "myapp/profile.html", {
+        "form": addCredit,
+        "balance": balance
+    })
 
 
 def lookup(*symbols):

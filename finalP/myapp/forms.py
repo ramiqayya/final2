@@ -1,8 +1,8 @@
 from django import forms
 
 
-class addCredit(forms.Form):
+class AddCredit(forms.Form):
     amount = forms.DecimalField(
-        Label='Amount', max_digits=10, decimal_places=2)
+        label='Amount', min_value=0, max_digits=10, decimal_places=2)
     transaction_type = forms.ChoiceField(
         choices=[('deposit', 'Deposit'), ('withdraw', 'Withdraw')])
