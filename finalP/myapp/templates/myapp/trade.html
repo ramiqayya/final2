@@ -4,4 +4,14 @@
 
 <h2>Trading page</h2>
 
+<form action="{%url 'trade'%}">
+    <label for="symbol">Coin Symbol:</label>
+    <input type="text" name="symbol" id="symbol">
+    <input type="submit" value="Check Price" name="check">
+</form>
+
+{%if data%}
+<h3>{{data}}</h3>
+{%endif%}
+
 {%endblock%}

@@ -233,6 +233,23 @@ def profile(request):
 
 
 def trade(request):
+    if "symbol" in request.GET:
+        symbol = request.GET.get('symbol')
+        try:
+            details = lookup(symbol)
+            return render(request, "myapp/trade.html", {
+                "data": details['data'][symbol][0]['quote']['USD']['price']
+
+            })
+        except (KeyError, ValueError):
+
+            return render(request, "myapp/error.html", {
+                "code": 404,
+                "message": "NOT FOUND!"
+
+            })
+        # price = details['quote']['USD']['price']
+
     return render(request, "myapp/trade.html")
 
 
