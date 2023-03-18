@@ -10,8 +10,11 @@
     <input type="submit" value="Check Price" name="check">
 </form>
 
-{%if data%}
-<h3>{{data}}</h3>
+{%if price%}
+<hr>
+<p>Crypto Name: {{coin_name}} ({{symbol}})</p>
+<p>Price:<b>{{price}}</b></p>
+
 {%endif%}
 
 {%endblock%}

@@ -234,11 +234,15 @@ def profile(request):
 
 def trade(request):
     if "symbol" in request.GET:
-        symbol = request.GET.get('symbol')
+        symbol = request.GET.get('symbol').upper()
         try:
             details = lookup(symbol)
+            print(details)
             return render(request, "myapp/trade.html", {
-                "data": details['data'][symbol][0]['quote']['USD']['price']
+                "price": details['data'][symbol][0]['quote']['USD']['price'],
+                "coin_name": details['data'][symbol][0]['name'],
+                "symbol": details['data'][symbol][0]['symbol']
+
 
             })
         except (KeyError, ValueError):
