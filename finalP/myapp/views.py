@@ -245,7 +245,7 @@ def trade(request):
 
 
             })
-        except (KeyError, ValueError):
+        except (KeyError, IndexError):
 
             return render(request, "myapp/error.html", {
                 "code": 404,
