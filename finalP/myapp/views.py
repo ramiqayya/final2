@@ -187,7 +187,7 @@ def register(request):
 
 
 @login_required(login_url='/login')
-def profile(request):
+def portfolio(request):
     thisUser = User.objects.get(pk=request.user.pk)
     # serialized_user = serialize('json', [thisUser,])
     # json_user = json.loads(serialized_user)[0]['fields']
@@ -211,7 +211,7 @@ def profile(request):
 
                 thisUser.balance = thisUser.balance+amount
                 thisUser.save()
-                return HttpResponseRedirect(reverse('profile'))
+                return HttpResponseRedirect(reverse('portfolio'))
             else:
                 if thisUser.balance > amount:
                     thisUser.balance = thisUser.balance-amount
@@ -222,11 +222,11 @@ def profile(request):
                         "message": "Not enough balance to withdraw"
                     })
 
-                return HttpResponseRedirect(reverse('profile'))
+                return HttpResponseRedirect(reverse('portfolio'))
 
     addCredit = AddCredit()
 
-    return render(request, "myapp/profile.html", {
+    return render(request, "myapp/portfolio.html", {
         "form": addCredit,
         "balance": balance
     })

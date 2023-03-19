@@ -4,7 +4,7 @@
 
 <h1>this is the profile page of {{user.username|title}}</h1>
 <h2>Balance: {{balance}}</h2>
-<form action="{% url 'profile'%}" method="POST">
+<form action="{% url 'portfolio'%}" method="POST">
     {%csrf_token%}
 
     {{form}}
