@@ -13,7 +13,7 @@ import json
 from .forms import AddCredit
 
 from django.core.serializers import serialize
-from .models import User
+from .models import User, Wallet, CoinsAmount
 # Create your views here.
 
 
@@ -188,13 +188,12 @@ def register(request):
 
 @login_required(login_url='/login')
 def portfolio(request):
+    current_user = request.user
     thisUser = User.objects.get(pk=request.user.pk)
     # serialized_user = serialize('json', [thisUser,])
     # json_user = json.loads(serialized_user)[0]['fields']
     # print(json.dumps(json_user, indent=4))
     balance = thisUser.balance
-    print(thisUser)
-
     if request.method == "POST":
         addCredit = AddCredit(request.POST)
         if addCredit.is_valid():
