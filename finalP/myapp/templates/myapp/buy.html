@@ -1,0 +1,13 @@
+{% extends 'myapp/layout.html' %}
+
+{%block body%}
+
+<form action="{% url 'buy'%}" method="POST">
+    <p>One {{symbol}} = {{price}}</p>
+    <label for="amount">Enter Amount</label>
+    <input type="number" name="amount" id="amount">
+    <input type="submit">
+
+</form>
+
+{%endblock%}

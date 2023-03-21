@@ -234,9 +234,10 @@ def portfolio(request):
 def trade(request):
     if "symbol" in request.GET:
         symbol = request.GET.get('symbol').upper()
+
         try:
             details = lookup(symbol)
-            print(details)
+
             return render(request, "myapp/trade.html", {
                 "price": details['data'][symbol][0]['quote']['USD']['price'],
                 "coin_name": details['data'][symbol][0]['name'],
@@ -251,9 +252,19 @@ def trade(request):
                 "message": "NOT FOUND!"
 
             })
-        # price = details['quote']['USD']['price']
 
     return render(request, "myapp/trade.html")
+
+
+def buy(request):
+    if "csymb" in request.GET:
+        bsymbol = request.GET.get('csymb')
+        bprice = request.GET.get('cprice')
+
+        return render(request, "myapp/buy.html", {
+            "symbol": bsymbol,
+            "price": bprice
+        })
 
 
 def lookup(*symbols):
