@@ -7,11 +7,12 @@
     <label for="amount">Enter Amount</label>
     <input type="number" name="amount" id="amount" min="0">
     <p>Price: $<span id="coinPrice">{{price}}</span></p>
-
+    <p id="total">Total price: <b>$</b><b class="results"></b> </p>
+    <p id="tmessage"></p>
     <input type="submit">
 
 </form>
-<p>Total price: <b>$</b><b class="results"></b> </p>
+
 
 
 {%endblock%}
