@@ -11,6 +11,7 @@ from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import json
 from .forms import AddCredit
+from decimal import Decimal
 
 from django.core.serializers import serialize
 from .models import User, Wallet, CoinsAmount
@@ -257,6 +258,42 @@ def trade(request):
 
 
 def buy(request):
+    if request.method == "POST":
+        amount = request.POST["amount"]
+        price = request.POST["price"]
+        symbol = request.POST["symbol"]
+        wallets = Wallet.objects.all()
+        user = request.user
+
+        print(user.balance)
+        symb = []
+        for wallet in wallets:
+            print(wallet.symbol)
+            symb.append(wallet.symbol)
+
+        if user.balance < Decimal(amount)*Decimal(price):
+            return render(request, "myapp/error.html",
+                          {
+                              "code": 403,
+                              "message": "Not enough Balance"
+                          }
+                          )
+        if symbol not in symb:
+            user.balance -= Decimal(amount)*Decimal(price)
+            user.save()
+            thisWallet = Wallet.objects.create(
+                symbol=symbol, user=request.user)
+            CoinsAmount.objects.create(
+                user=request.user, wallet=thisWallet, amount=amount)
+        elif symbol in symb:
+            pass
+
+        print(amount)
+        print(price)
+        print(symbol)
+        print(float(amount)*float(price))
+
+        return HttpResponseRedirect(reverse('portfolio'))
     if "csymb" in request.GET:
         bsymbol = request.GET.get('csymb')
         bprice = request.GET.get('cprice')

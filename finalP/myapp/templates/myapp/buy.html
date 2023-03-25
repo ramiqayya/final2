@@ -3,13 +3,16 @@
 {%block body%}
 
 <form action="{% url 'buy'%}" method="POST">
+    {%csrf_token%}
     <p>One {{symbol}} = ${{price}}</p>
     <label for="amount">Enter Amount</label>
     <input type="number" name="amount" id="amount" min="0">
+    <input type="text" name="price" id="price" hidden value="{{price}}">
+    <input type="text" name="symbol" id="symbol" hidden value="{{symbol}}">
     <p>Price: $<span id="coinPrice">{{price}}</span></p>
     <p id="total">Total price: <b>$</b><b class="results"></b> </p>
     <p id="tmessage"></p>
-    <input type="submit">
+    <input type="submit" value="BUY">
 
 </form>
 
