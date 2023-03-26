@@ -191,10 +191,10 @@ def register(request):
 def portfolio(request):
     current_user = request.user
     thisUser = User.objects.get(pk=request.user.pk)
-    # serialized_user = serialize('json', [thisUser,])
-    # json_user = json.loads(serialized_user)[0]['fields']
-    # print(json.dumps(json_user, indent=4))
     balance = thisUser.balance
+    coins = CoinsAmount.objects.filter(user=request.user)
+    for coin in coins:
+        print(coin.wallet.symbol)
     if request.method == "POST":
         addCredit = AddCredit(request.POST)
         if addCredit.is_valid():
@@ -228,7 +228,8 @@ def portfolio(request):
 
     return render(request, "myapp/portfolio.html", {
         "form": addCredit,
-        "balance": balance
+        "balance": balance,
+        "coins": coins
     })
 
 

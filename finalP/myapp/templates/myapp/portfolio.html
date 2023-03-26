@@ -2,8 +2,13 @@
 
 {%block body%}
 
+{% for coin in coins%}
+<p>{{coin.wallet.symbol}}: <b>{{coin.amount}}</b></p>
+
+{%endfor%}
+
 <h1 class="mt-3">{{user.username|title}} Portfolio</h1>
-<h2>Balance: {{balance}}</h2>
+<h2>Balance: ${{balance}}</h2>
 <form action="{% url 'portfolio'%}" method="POST">
     {%csrf_token%}
 
