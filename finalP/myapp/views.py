@@ -278,15 +278,20 @@ def buy(request):
                               "message": "Not enough Balance"
                           }
                           )
-        if symbol not in symb:
+        else:
             user.balance -= Decimal(amount)*Decimal(price)
             user.save()
+        if symbol not in symb:
+
             thisWallet = Wallet.objects.create(
                 symbol=symbol, user=request.user)
             CoinsAmount.objects.create(
                 user=request.user, wallet=thisWallet, amount=amount)
         elif symbol in symb:
-            pass
+            thisWallet = Wallet.objects.get(symbol=symbol, user=request.user)
+            coins_amount = CoinsAmount.objects.get(wallet=thisWallet)
+            coins_amount.amount += Decimal(amount)
+            coins_amount.save()
 
         print(amount)
         print(price)
