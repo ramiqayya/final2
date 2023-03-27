@@ -263,7 +263,7 @@ def buy(request):
         amount = request.POST["amount"]
         price = request.POST["price"]
         symbol = request.POST["symbol"]
-        wallets = Wallet.objects.all()
+        wallets = Wallet.objects.filter(user=request.user)
         user = request.user
 
         print(user.balance)
