@@ -23,7 +23,7 @@ class CoinsAmount(models.Model):
         User, on_delete=models.CASCADE, related_name='coin_amounts')
     wallet = models.ForeignKey(
         Wallet, on_delete=models.CASCADE, related_name='coins')
-    amount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    amount = models.DecimalField(max_digits=20, decimal_places=4, default=0)
 
     def __str__(self):
         return f"{self.amount} {self.wallet.symbol} in {self.user.username}'s wallet"

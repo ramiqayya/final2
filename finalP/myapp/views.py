@@ -294,10 +294,10 @@ def buy(request):
             coins_amount.amount += Decimal(amount)
             coins_amount.save()
 
-        print(amount)
-        print(price)
-        print(symbol)
-        print(float(amount)*float(price))
+        # print(amount)
+        # print(price)
+        # print(symbol)
+        # print(float(amount)*float(price))
 
         return HttpResponseRedirect(reverse('portfolio'))
     if "csymb" in request.GET:
