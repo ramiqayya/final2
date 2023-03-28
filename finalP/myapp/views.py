@@ -193,8 +193,11 @@ def portfolio(request):
     thisUser = User.objects.get(pk=request.user.pk)
     balance = thisUser.balance
     coins = CoinsAmount.objects.filter(user=request.user)
-    for coin in coins:
-        print(coin.wallet.symbol)
+    price_dict = {coin.wallet.symbol:
+                  [coin.amount, lookup(coin.wallet.symbol)[
+                      'data'][coin.wallet.symbol][0]['quote']['USD']['price']*float(coin.amount)] for coin in coins}
+    print(price_dict)
+
     if request.method == "POST":
         addCredit = AddCredit(request.POST)
         if addCredit.is_valid():
@@ -225,11 +228,14 @@ def portfolio(request):
                 return HttpResponseRedirect(reverse('portfolio'))
 
     addCredit = AddCredit()
+    # row_number = 0
 
     return render(request, "myapp/portfolio.html", {
         "form": addCredit,
         "balance": balance,
-        "coins": coins
+        "coins": coins,
+        "prices": price_dict,
+        # "row_number": row_number
     })
 
 
@@ -293,11 +299,6 @@ def buy(request):
             coins_amount = CoinsAmount.objects.get(wallet=thisWallet)
             coins_amount.amount += Decimal(amount)
             coins_amount.save()
-
-        # print(amount)
-        # print(price)
-        # print(symbol)
-        # print(float(amount)*float(price))
 
         return HttpResponseRedirect(reverse('portfolio'))
     if "csymb" in request.GET:

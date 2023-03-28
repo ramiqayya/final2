@@ -1,5 +1,5 @@
 {% extends 'myapp/layout.html' %}
-
+{% load humanize%}
 {%block body%}
 
 
@@ -15,9 +15,35 @@
 </form>
 <hr>
 <h3>Balances</h3>
-{% for coin in coins%}
-<p>{{coin.wallet.symbol}}: <b>{{coin.amount}}</b></p>
 
-{%endfor%}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Symbol</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Value in USD</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for symbol, values in prices.items %}
+
+
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{ symbol }}</td>
+            <td>{{ values.0 }}</td>
+            <td>${{ values.1 |floatformat:2|intcomma}}</td>
+        </tr>
+
+
+        {% endfor %}
+
+
+
+
+    </tbody>
+</table>
 
 {%endblock%}
