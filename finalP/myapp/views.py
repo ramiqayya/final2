@@ -196,7 +196,13 @@ def portfolio(request):
     price_dict = {coin.wallet.symbol:
                   [coin.amount, lookup(coin.wallet.symbol)[
                       'data'][coin.wallet.symbol][0]['quote']['USD']['price']*float(coin.amount)] for coin in coins}
-    print(price_dict)
+    # print(price_dict)
+    total = 0
+    for symbol in price_dict:
+        amount, value = price_dict[symbol]
+        print(symbol, amount, value)
+        total += float(value)
+    print(total)
 
     if request.method == "POST":
         addCredit = AddCredit(request.POST)
@@ -235,6 +241,7 @@ def portfolio(request):
         "balance": balance,
         "coins": coins,
         "prices": price_dict,
+        "total": total
         # "row_number": row_number
     })
 

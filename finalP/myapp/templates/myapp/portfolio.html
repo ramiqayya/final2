@@ -4,7 +4,7 @@
 
 
 <h1 class="mt-3">{{user.username|title}} Portfolio</h1>
-<h2>Balance: ${{balance}}</h2>
+<h2>Balance: ${{balance|floatformat:2|intcomma}}</h2>
 <form action="{% url 'portfolio'%}" method="POST">
     {%csrf_token%}
 
@@ -33,12 +33,18 @@
         <tr>
             <th scope="row">{{forloop.counter}}</th>
             <td>{{ symbol }}</td>
-            <td>{{ values.0 }}</td>
+            <td>{{ values.0|intcomma }}</td>
             <td>${{ values.1 |floatformat:2|intcomma}}</td>
         </tr>
 
 
         {% endfor %}
+        <tr>
+            <th scope="row"></th>
+            <td><b>Total Value:</b> </td>
+            <td></td>
+            <td><b>${{ total |floatformat:2|intcomma}}</b> </td>
+        </tr>
 
 
 
