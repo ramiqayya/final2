@@ -35,6 +35,7 @@
             <td>{{ symbol }}</td>
             <td>{{ values.0|intcomma }}</td>
             <td>${{ values.1 |floatformat:2|intcomma}}</td>
+            <td><a class="btn btn-outline-success" href="{% url 'sell' symbol %}">Sell {{symbol}}</a></td>
         </tr>
 
 

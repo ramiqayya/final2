@@ -246,6 +246,12 @@ def portfolio(request):
     })
 
 
+@login_required(login_url='/login')
+def sell(request, symbol):
+    return render(request, 'myapp/sell.html')
+
+
+@login_required(login_url='/login')
 def trade(request):
     if "symbol" in request.GET:
         symbol = request.GET.get('symbol').upper()
