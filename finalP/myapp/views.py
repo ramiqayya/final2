@@ -13,6 +13,8 @@ import json
 from .forms import AddCredit
 from decimal import Decimal
 
+from django.core.exceptions import ObjectDoesNotExist
+
 from django.core.serializers import serialize
 from .models import User, Wallet, CoinsAmount
 # Create your views here.
@@ -127,12 +129,12 @@ def index(request):
     )
 
 
-@login_required(login_url='/login')
-def greet(request, name):
-    return render(request, "myapp/greet.html", {
-        "name": name.title()
+# @login_required(login_url='/login')
+# def greet(request, name):
+#     return render(request, "myapp/greet.html", {
+#         "name": name.title()
 
-    })
+#     })
 
 
 def login_view(request):
@@ -248,7 +250,23 @@ def portfolio(request):
 
 @login_required(login_url='/login')
 def sell(request, symbol):
-    return render(request, 'myapp/sell.html')
+
+    try:
+        thisWallet = Wallet.objects.get(
+            symbol__iexact=symbol, user=request.user)
+
+    except (ObjectDoesNotExist):
+
+        return render(request, 'myapp/error.html', {
+            "code": 404,
+            "message": "This coin wallet does not exist"
+
+        })
+    coins = CoinsAmount.objects.get(user=request.user, wallet=thisWallet)
+    print(coins)
+    return render(request, 'myapp/sell.html',
+                  {"coins": coins}
+                  )
 
 
 @login_required(login_url='/login')

@@ -14,7 +14,7 @@ urlpatterns = [
     path("sell/<str:symbol>", views.sell, name="sell"),
     path("buy", views.buy, name="buy"),
 
-    path("<str:name>", views.greet, name="swade"),
+    # path("<str:name>", views.greet, name="swade"),
 
 
 ]
