@@ -263,7 +263,28 @@ def sell(request, symbol):
 
         })
     coins = CoinsAmount.objects.get(user=request.user, wallet=thisWallet)
-    print(coins)
+    if request.method == "POST":
+        amount = request.POST['amount']
+        symbol = request.POST['symbol']
+        try:
+            thisWallet = Wallet.objects.get(
+                symbol__iexact=symbol, user=request.user)
+
+        except (ObjectDoesNotExist):
+
+            return render(request, 'myapp/error.html', {
+                "code": 404,
+                "message": "This coin wallet does not exist"
+
+            })
+
+        current = CoinsAmount.objects.get(
+            user=request.user, wallet=thisWallet)
+        current.amount = current.amount - Decimal(amount)
+        current.save()
+        print(current.amount)
+        print(f'amount ej {amount} and symbol ej {symbol}')
+
     return render(request, 'myapp/sell.html',
                   {"coins": coins}
                   )

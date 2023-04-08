@@ -5,5 +5,17 @@
 <p>{{coins.amount}}</p>
 <p>{{coins.wallet.symbol}}</p>
 
+<form action="{% url 'sell' coins.wallet.symbol %}" method="POST">
+    {%csrf_token%}
+    <label for="coin">Coin:</label>
+    <input type="text" id="coin" value="{{coins.wallet.symbol}}" disabled>
+    <input type="hidden" name="symbol" value="{{coins.wallet.symbol}}">
+
+    <label for="amount">Amount</label>
+    <input type="number" min="0" max="{{coins.amount}}" name="amount" value="{{coins.amount}}">
+
+    <input type="submit" value="Sell">
+
+</form>
 
 {%endblock%}
