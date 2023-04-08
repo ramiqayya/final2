@@ -280,6 +280,18 @@ def sell(request, symbol):
 
         current = CoinsAmount.objects.get(
             user=request.user, wallet=thisWallet)
+        if float(amount) > float(current.amount):
+            return render(request, 'myapp/error.html', {
+                "code": 403,
+                "message": "You don't have enough coins in this wallet!"
+
+            })
+        thisUser = User.objects.get(pk=request.user.pk)
+        sellprice = lookup(symbol)[
+            'data'][symbol][0]['quote']['USD']['price']*float(amount)
+        thisUser.balance = thisUser.balance+Decimal(sellprice)
+        thisUser.save()
+
         current.amount = current.amount - Decimal(amount)
         current.save()
         print(current.amount)
