@@ -2,8 +2,7 @@
 
 {%block body%}
 
-<p>{{coins.amount}}</p>
-<p>{{coins.wallet.symbol}}</p>
+
 
 <form action="{% url 'sell' coins.wallet.symbol %}" method="POST">
     {%csrf_token%}

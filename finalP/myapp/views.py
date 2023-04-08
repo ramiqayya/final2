@@ -294,8 +294,6 @@ def sell(request, symbol):
 
         current.amount = current.amount - Decimal(amount)
         current.save()
-        print(current.amount)
-        print(f'amount ej {amount} and symbol ej {symbol}')
 
     return render(request, 'myapp/sell.html',
                   {"coins": coins}
