@@ -28,16 +28,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Add the arrow character to the cell's content
-        cell.style.position = 'relative';
-        cell.style.paddingRight = '10px'; // Adjust the padding to make space for the arrow
-        const arrow = document.createElement('span');
-        arrow.style.position = 'absolute';
-        arrow.style.top = '50%';
-        arrow.style.transform = 'translateY(-50%)';
-        arrow.style.right = '0';
-        arrow.style.fontSize = '0.8em'; // Adjust the font size of the arrow
-        arrow.textContent = value < 0 ? downArrow : upArrow;
-        cell.appendChild(arrow);
+        // cell.style.position = 'relative';
+        // cell.style.paddingRight = '10px'; // Adjust the padding to make space for the arrow
+        // const arrow = document.createElement('span');
+        // arrow.style.position = 'absolute';
+        // arrow.style.top = '50%';
+        // arrow.style.transform = 'translateY(-50%)';
+        // arrow.style.right = '0';
+        // arrow.style.fontSize = '0.8em'; // Adjust the font size of the arrow
+        // arrow.textContent = value < 0 ? downArrow : upArrow;
+        // cell.appendChild(arrow);
     });
 
 
