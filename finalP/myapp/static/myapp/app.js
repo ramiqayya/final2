@@ -40,7 +40,36 @@ document.addEventListener("DOMContentLoaded", function () {
         // cell.appendChild(arrow);
     });
 
+    const prices = document.querySelectorAll('td:nth-child(3)');
+    prices.forEach(price => {
+        const content = price.textContent
+        const priceN = Number(content.replace('$', ''));
 
+        if (priceN > 1) {
+
+            const formattedNumber = priceN.toLocaleString('en-US', { maximumFractionDigits: 2 });
+            price.textContent = '$' + formattedNumber
+
+        } if (priceN < 1) {
+            let update = ''
+            for (let i = 0; i < content.length; i++) {
+                update += content[i]
+                if (content[i] != '0' || content[i] != '$' || content[i] != '.') {
+                    n = 4
+                    while (n != 0) {
+
+                    }
+
+
+                }
+            }
+
+
+        }
+
+
+
+    })
 
     //////////////
     // Select all cells containing percentage changes
