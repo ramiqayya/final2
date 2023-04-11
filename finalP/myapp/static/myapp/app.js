@@ -52,18 +52,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
         } if (priceN < 1) {
             let update = ''
+            let isComplete = false;
             for (let i = 0; i < content.length; i++) {
-                update += content[i]
-                if (content[i] != '0' || content[i] != '$' || content[i] != '.') {
-                    n = 4
-                    while (n != 0) {
 
+                if (content[i] != '0' && content[i] != '$' && content[i] != '.') {
+
+                    for (let j = 0; j < 4; j++) {
+                        update += content[i]
+                        i++
+                        console.log(i)
+                        console.log('sawade ' + content[i])
+                        isComplete = true;
                     }
+                    if (isComplete == true) { break; }
 
+
+                } else {
+                    update += content[i]
 
                 }
             }
-
+            price.textContent = update;
 
         }
 
