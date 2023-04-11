@@ -27,18 +27,18 @@ document.addEventListener("DOMContentLoaded", function () {
             cell.textContent = `0%`;
         }
 
-        // Add the arrow character to the cell's content
-        // cell.style.position = 'relative';
-        // cell.style.paddingRight = '10px'; // Adjust the padding to make space for the arrow
-        // const arrow = document.createElement('span');
-        // arrow.style.position = 'absolute';
-        // arrow.style.top = '50%';
-        // arrow.style.transform = 'translateY(-50%)';
-        // arrow.style.right = '0';
-        // arrow.style.fontSize = '0.8em'; // Adjust the font size of the arrow
-        // arrow.textContent = value < 0 ? downArrow : upArrow;
-        // cell.appendChild(arrow);
+
     });
+
+    const caps = document.querySelectorAll('td:nth-child(7)');
+    caps.forEach(cap => {
+        const content1 = cap.textContent;
+        const capN = Number(content1.replace('$', ''));
+        const formattedNumber1 = capN.toLocaleString('en-US', { maximumFractionDigits: 0 });
+        cap.textContent = '$' + formattedNumber1
+
+
+    })
 
     const prices = document.querySelectorAll('td:nth-child(3)');
     prices.forEach(price => {
@@ -60,8 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     for (let j = 0; j < 4; j++) {
                         update += content[i]
                         i++
-                        console.log(i)
-                        console.log('sawade ' + content[i])
                         isComplete = true;
                     }
                     if (isComplete == true) { break; }
