@@ -282,6 +282,7 @@ def sell(request, symbol):
 
         current.amount = current.amount - Decimal(amount)
         current.save()
+        return HttpResponseRedirect(reverse('portfolio'))
 
     return render(request, 'myapp/sell.html',
                   {"coins": coins}
