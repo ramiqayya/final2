@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     // Select all cells containing percentage changes
-    const cells = document.querySelectorAll('td:nth-child(4), td:nth-child(5), td:nth-child(6)');
+    const cells = document.querySelectorAll('.crypto td:nth-child(4),.crypto td:nth-child(5),.crypto td:nth-child(6)');
 
     // Define the arrow characters
     const upArrow = '\u2B9d'; // ↑
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-    const caps = document.querySelectorAll('td:nth-child(7)');
+    const caps = document.querySelectorAll('.crypto td:nth-child(7)');
     caps.forEach(cap => {
         const content1 = cap.textContent;
         const capN = Number(content1.replace('$', ''));
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     })
 
-    const prices = document.querySelectorAll('td:nth-child(3)');
+    const prices = document.querySelectorAll('.crypto td:nth-child(3)');
     prices.forEach(price => {
         const content = price.textContent
         const priceN = Number(content.replace('$', ''));
