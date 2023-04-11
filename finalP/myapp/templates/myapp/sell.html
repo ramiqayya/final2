@@ -16,7 +16,7 @@
                 <input type="hidden" name="symbol" value="{{coins.wallet.symbol}}">
 
                 <label for="amount" class="form-label">Amount</label>
-                <input type="number" class="form-control mb-3" min="0" max="{{coins.amount}}" name="amount"
+                <input type="number" class="form-control mb-3" min="0" max="{{coins.amount}}" step=".001" name="amount"
                     value="{{coins.amount}}">
 
                 <input type="submit" class="btn btn-outline-danger" value="Sell">
