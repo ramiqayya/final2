@@ -2,24 +2,39 @@
 
 {%block body%}
 
-<h2 class="mt-3 mb-3">Price Query</h2>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
 
-<form action="{%url 'trade'%}">
-    <label class="form-label" for="symbol">Coin Symbol:</label>
-    <input class="form-control mb-3 " type="text" name="symbol" id="symbol" required>
-    <input class="btn btn-outline-success" type="submit" value="Check Price" name="check">
-</form>
+        </div>
+        <div class="col">
+            <h2 class="mt-3 mb-3 text-center">Price Query</h2>
 
-{%if price%}
-<hr>
-<p>Crypto Name: {{coin_name}} ({{symbol}})</p>
-<p>Price: <b>${{price}}</b></p>
-<form action="{%url 'buy'%}">
-    <input type="text" name="csymb" value="{{symbol}}" hidden id="">
-    <input type="text" name="cprice" value="{{price}}" hidden id="">
-    <input type="submit" class="btn btn-outline-primary" value="Buy {{symbol}}" name="buy">
-</form>
+            <form action="{%url 'trade'%}">
+                <label class="form-label" for="symbol">Coin Symbol:</label>
+                <input class="form-control mb-3 " autofocus type="text" name="symbol" id="symbol" required>
+                <input class="btn btn-outline-success" type="submit" value="Check Price" name="check">
+            </form>
 
-{%endif%}
+            {%if price%}
+            <hr>
+            <p>Crypto Name: {{coin_name}} ({{symbol}})</p>
+            <p>Price: <b>${{price}}</b></p>
+            <form action="{%url 'buy'%}">
+                <input type="text" name="csymb" value="{{symbol}}" hidden id="">
+                <input type="text" name="cprice" value="{{price}}" hidden id="">
+                <input type="submit" class="btn btn-outline-primary" value="Buy {{symbol}}" name="buy">
+            </form>
+
+            {%endif%}
+
+        </div>
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+
+
 
 {%endblock%}

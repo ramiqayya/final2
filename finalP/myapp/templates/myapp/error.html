@@ -2,7 +2,12 @@
 
 {%block body%}
 
-<h2>Error Code: {{code}}</h2>
-<h2>Error: {{message}}</h2>
+
+<div class="alert alert-danger mt-5" role="alert">
+    <h4 class="alert-heading">Error Code: {{code}}</h4>
+    <p>Error: {{message}}</p>
+
+</div>
+
 
 {%endblock%}

@@ -3,18 +3,32 @@
 {%block body%}
 
 
+<div class="container">
+    <div class="row">
+        <div class="col">
 
-<form action="{% url 'sell' coins.wallet.symbol %}" method="POST">
-    {%csrf_token%}
-    <label for="coin">Coin:</label>
-    <input type="text" id="coin" value="{{coins.wallet.symbol}}" disabled>
-    <input type="hidden" name="symbol" value="{{coins.wallet.symbol}}">
+        </div>
+        <div class="col">
+            <form action="{% url 'sell' coins.wallet.symbol %}" method="POST">
+                {%csrf_token%}
+                <label for="coin" class="form-label mt-5">Coin:</label>
+                <input type="text" id="coin" class="form-control" value="{{coins.wallet.symbol}}" disabled>
+                <input type="hidden" name="symbol" value="{{coins.wallet.symbol}}">
 
-    <label for="amount">Amount</label>
-    <input type="number" min="0" max="{{coins.amount}}" name="amount" value="{{coins.amount}}">
+                <label for="amount" class="form-label">Amount</label>
+                <input type="number" class="form-control mb-3" min="0" max="{{coins.amount}}" name="amount"
+                    value="{{coins.amount}}">
 
-    <input type="submit" value="Sell">
+                <input type="submit" class="btn btn-outline-danger" value="Sell">
 
-</form>
+            </form>
+        </div>
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+
+
 
 {%endblock%}

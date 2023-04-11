@@ -45,12 +45,9 @@ def index(request):
     try:
         response = session.get(url, params=parameters)
         data = json.loads(response.text)
-        print(data)
+
     except (ConnectionError, Timeout, TooManyRedirects) as e:
         return e
-    # btcp = lookup('BTC')['data']['BTC'][0]['quote']['USD']['price']
-    # ethp = lookup('ETH')['data']['ETH'][0]['quote']['USD']['price']
-    # usdt = lookup('USDT')['data']['USDT'][0]['quote']['USD']['price']
 
     return render(request, "myapp/index.html", {
         "all": data['data'][1],
@@ -129,14 +126,6 @@ def index(request):
     )
 
 
-# @login_required(login_url='/login')
-# def greet(request, name):
-#     return render(request, "myapp/greet.html", {
-#         "name": name.title()
-
-#     })
-
-
 def login_view(request):
     if request.method == "POST":
 
@@ -202,16 +191,15 @@ def portfolio(request):
     total = 0
     for symbol in price_dict:
         amount, value = price_dict[symbol]
-        print(symbol, amount, value)
+
         total += float(value)
-    print(total)
 
     if request.method == "POST":
         addCredit = AddCredit(request.POST)
         if addCredit.is_valid():
             amount = addCredit.cleaned_data['amount']
             choice = addCredit.cleaned_data['transaction_type']
-            print(amount, choice)
+
             if amount < 0:
                 return render(request, "myapp/error.html", {
                     "code": "403",
@@ -334,10 +322,9 @@ def buy(request):
         wallets = Wallet.objects.filter(user=request.user)
         user = request.user
 
-        print(user.balance)
         symb = []
         for wallet in wallets:
-            print(wallet.symbol)
+
             symb.append(wallet.symbol)
 
         if user.balance < Decimal(amount)*Decimal(price):
