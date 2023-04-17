@@ -32,4 +32,14 @@ This will render the logout html template file for loging the user out the user 
 
 #### portfolio
 
-This method will render the portfolio page. using this method the user will be able to add new balance and it will show all wallets the user has.
+This method will render the portfolio page. using this method the user will be able to deposit and withdraw money, also it shows all wallets that the user has.
+
+#### sell
+
+This mehtod will render the sell page. After you insert the amount this route will check the amount of coins you have in this wallet and check the current price of that coin and sell. after sell it the money will be added to the main balance in the portfolio.
+
+#### trade 
+
+This method will render the trade page template where you can enter the symbol of a cryptpcurrency and press check price. this method will check if that symbol exist and will show the current price of this coin. Under the shown price you can press the buy coin button that will transfer you to the buy page.
+
+
