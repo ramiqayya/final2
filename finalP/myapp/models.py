@@ -27,11 +27,3 @@ class CoinsAmount(models.Model):
 
     def __str__(self):
         return f"{self.amount} {self.wallet.symbol} in {self.user.username}'s wallet"
-
-# class Credit(models.Model):
-#     username = models.OneToOneField(
-#         User, on_delete=models.CASCADE, related_name="account_user")
-#     balance = models.IntegerField(default=0)
-
-#     def __str__(self):
-#         return f"{self.username} has {self.balance} in Balance"
