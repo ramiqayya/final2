@@ -10,11 +10,12 @@ Overall, this project represents a significant achievement in the field of crypt
 
 ## Files:
 
-* urls.py
+*in myapp folder I modified the following files:*
+### urls.py
 
 This file contains all the url patterns that is going to be used in the website.
 
-* views.py 
+### views.py 
 
 This file is responsible for all the backend work it consist with many functions which is going to be used to run the website routes, The functions are:
 
@@ -53,7 +54,51 @@ This function will take the coin symbol , then send a request to the API and ret
 ### models.py
 
 This file has 3 models:
-*
 
+* User
+
+This model for creating new user.
+
+* Wallet
+
+This model is for creating new wallet.
+
+* CoinsAmout
+
+This model is for adding coins amounts for each wallet.
+
+*inside templates/myapp I added the following files:*
+
+### register.html
+
+This file contains the form for registering a new user.
+
+### login.html
+
+This contains the login form 
+
+### index.html
+
+This template file contains the main page which has the top 10 coins table.
+
+### portfolio.html
+
+This template file contains the user portfolio which shows the balance and a table wallets with each amount of coins and it's current value.
+
+### trade.html
+
+This template file contains a  form for entering the symbol that you would like to enquire about it's current price. As soon as you click check price button the current price will appear with a buy botton.
+
+### sell.html
+
+After clicking at the sell button next to each coin you will be directed to the sell page. This file template is for sell page which contains a form for entering the amount of coins you will like to sell.
+
+### error.html
+
+This template file for showing error codes and error messages.
+
+### layout.html
+
+This template file is for the layout of all pages which can be included in all other templates it contains the navbar and any other view that is going to be shown in all pages.
 
 
