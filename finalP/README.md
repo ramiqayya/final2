@@ -101,4 +101,12 @@ This template file for showing error codes and error messages.
 
 This template file is for the layout of all pages which can be included in all other templates it contains the navbar and any other view that is going to be shown in all pages.
 
+*inside static/myapp I added the following files:*
 
+### styles.css
+
+This file is responsible for some of the styles in the website.
+
+### app.js
+
+This for adding some dynamic styles to the website.
