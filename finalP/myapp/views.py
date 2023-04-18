@@ -359,6 +359,14 @@ def buy(request):
             "symbol": bsymbol,
             "price": bprice
         })
+    else:
+        
+        return  render(request, "myapp/error.html",
+                          {
+                              "code": 404,
+                              "message": "Page not found"
+                          }
+                          )
 
 
 def lookup(*symbols):

@@ -40,6 +40,19 @@ This mehtod will render the sell page. After you insert the amount this route wi
 
 #### trade 
 
-This method will render the trade page template where you can enter the symbol of a cryptpcurrency and press check price. this method will check if that symbol exist and will show the current price of this coin. Under the shown price you can press the buy coin button that will transfer you to the buy page.
+This method will render the trade page template where you can enter the symbol of a cryptpcurrency then press check price. this method will check if that symbol exists and will show the current price of this coin. Under the shown price you can press the buy coin button that will transfer you to the buy page.
+
+#### buy 
+
+After checking the price in the trade page you can proceed and press buy button, this method will check the available balance in your portfolio and let you buy a new coins with new wallet or add to coins to the existing wallets.
+
+#### lookup
+
+This function will take the coin symbol , then send a request to the API and return the data for that coin symbol.
+
+### models.py
+
+
+
 
 
