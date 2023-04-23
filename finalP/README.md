@@ -109,4 +109,15 @@ This file is responsible for some of the styles in the website.
 
 ### app.js
 
-This for adding some dynamic styles to the website.
+This javascript file is for adding some dynamic styles to the website.
+
+## How to run the website
+
+To use this application you need to register a new user choose Register at the top right, then enter a Unique Username, E-mail, password and confirm password. Now you have a new account and you can enter and use the application anytime by choosing login for entering the website.
+The Index or homepage has a table of the top 10 cryptocurrencies by cap.
+To buy a new cryptocurrency first you have to choose trade button at the navbar, a new page will open you with a title of price query and text field asking for coin symbol that you would like to enquire about. After entering a correct symbol for a coin and pressing check a price the name of that coin with its symbol and price will appear at the bottom also a button will appear asking you if you would like to buy that coin. Whereas if you enter a wrong symbol the error page will appear with an error message.
+After entering a correct symbol then pressing buy that coin you will be redirected to the buy page this page will show you the current price and a field from entering the amount of that coin you would like to buy. But you can't anything without having a balance first.
+To add money to your balance you need to go to the portfolio page first. you can find the portfolio at the navbar, a new page will open showing the name of the user and the balance he have. Two fields one for entering the amount of money you would like to deposit or withdraw the other is a drop field for choosing the transaction type, wether you would like to depoit or withraw money. To deposit money to your account enter the amount you would like to deposit then choose deposit then press the "Deposit/Withdraw" button, now you can use that balance to buy cryptocurrencies.
+Again go to trade page and enter a valid symbol then press buy, enter the amount of that currency you would like to buy to total price of the amount will appear at the bottom of the field, press buy if you have enough credit, again you will be redirected to the portfolio page and a new wallet will appear at the table in the bottom of the page with coin symbol, amount and value in usd. 
+Please keep in mind that if you enter an amount of a coin with a total price more than what you have in the portfolio. An error page will appear telling you that you don't have enough balance.
+Try to buy several coins with the money you've deposited before. You will see if you buy a new coin it will be appear in the portfolio with a new wallet with the coin symbol, in the other hand if you buy an amount of you coin that you have it's wallet already that amount will be added to the amount you have previously  
