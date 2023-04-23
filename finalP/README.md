@@ -23,41 +23,49 @@ This file contains the URL patterns for your website. These patterns define how 
 
 This file contains the backend logic for your website. It includes several functions, such as:
 
-* register(): Renders the register page where a new user can be added to the database.
-* login_view(): Renders the login page where an existing user can log in.
-* logout_view(): Renders the logout page where a user can log out after being signed in.
-* portfolio(): Renders the user's portfolio page, where they can deposit or withdraw money and view all their wallets.
-* sell(): Renders the sell page where the user can enter the amount of coins they want to sell, checks the current price of the coin, and sells it, adding the money to their main balance in the portfolio.
-* trade(): Renders the trade page where the user can enter the symbol of a cryptocurrency, check its current price, and proceed to the buy page.
-* buy(): Checks the user's available balance and lets them buy a new coin with a new wallet or add coins to an existing wallet.
-* lookup(): Sends a request to an API with a coin symbol and returns the data for that coin.
+* **register()**: Renders the register page where a new user can be added to the database.
+* **login_view()**: Renders the login page where an existing user can log in.
+* **logout_view()**: Renders the logout page where a user can log out after being signed in.
+* **portfolio()**: Renders the user's portfolio page, where they can deposit or withdraw money and view all their wallets.
+* **sell()**: Renders the sell page where the user can enter the amount of coins they want to sell, checks the current price of the coin, and sells it, adding the money to their main balance in the portfolio.
+* **trade()**: Renders the trade page where the user can enter the symbol of a cryptocurrency, check its current price, and proceed to the buy page.
+* **buy()**: Checks the user's available balance and lets them buy a new coin with a new wallet or add coins to an existing wallet.
+* **lookup()**: Sends a request to an API with a coin symbol and returns the data for that coin.
 
 
 ### models.py
 
 This file includes three models:
 
-* User: Creates a new user.
-* Wallet: Creates a new wallet.
-* CoinsAmount: Adds the amount of coins to each wallet.
+* **User:** Creates a new user.
+* **Wallet:** Creates a new wallet.
+* **CoinsAmount:** Adds the amount of coins to each wallet.
 
 ## Templates
 *You have several templates in your templates/myapp folder. Here is a brief description of each:*
 
-### register.html: Contains the form for registering a new user.
-### login.html: Contains the login form.
-### index.html: The main page, displaying a table of the top 10 coins.
-### portfolio.html: Displays the user's portfolio, including their balance and a table of their wallets with each coin's current value.
-### trade.html: Contains a form for entering the symbol of a cryptocurrency, displaying its current price, and allowing the user to proceed to the buy page.
-### sell.html: Displays a form for entering the amount of coins the user wants to sell.
-### error.html: Displays error codes and messages.
-### layout.html: A template for the layout of all pages, including the navbar and any other views that appear on all pages.
+### register.html:
+Contains the form for registering a new user.
+### login.html:
+Contains the login form.
+### index.html:
+The main page, displaying a table of the top 10 coins.
+### portfolio.html:
+Displays the user's portfolio, including their balance and a table of their wallets with each coin's current value.
+### trade.html:
+Contains a form for entering the symbol of a cryptocurrency, displaying its current price, and allowing the user to proceed to the buy page.
+### sell.html:
+Displays a form for entering the amount of coins the user wants to sell.
+### error.html:
+Displays error codes and messages.
+### layout.html:
+A template for the layout of all pages, including the navbar and any other views that appear on all pages.
 
 ## Static files
 *Your static/myapp folder includes the following files:*
 
-* styles.css: Defines some of the styles used on the website.
-* app.js: Contains JavaScript code that adds dynamic styles to the website.
+* **styles.css:** Defines some of the styles used on the website.
+* **app.js:** Contains JavaScript code that adds dynamic styles to the website.
 
 ## How to Run the Application
 To use this application, you need to follow these steps:
