@@ -1,5 +1,6 @@
 # CapStone
 ## Distinctiveness and Complexity
+
 The goal of this project was to create a comprehensive cryptocurrency trading platform using real-time data from the coinmarketcap.com API. Unlike other trading platforms, this project allows users to make deposits, withdrawals, and trades using a variety of cryptocurrencies, providing a seamless and user-friendly experience.
 
 To accomplish this, I used a combination of technologies, including Django, CSS, Bootstrap, HTML, and JavaScript. I also integrated multiple APIs to gather real-time data on cryptocurrency prices, ensuring that users have the most up-to-date information when making trades.
@@ -8,33 +9,6 @@ One of the most complex aspects of this project was designing and implementing t
 
 Overall, this project represents a significant achievement in the field of cryptocurrency trading platforms, and I am proud to have been able to create such a comprehensive and innovative tool using my skills in web development and API integration.
 
-
-urls.py
-
-views.py
-
-models.py
-This file includes three models:
-
-User: Creates a new user.
-Wallet: Creates a new wallet.
-CoinsAmount: Adds the amount of coins to each wallet.
-Templates
-You have several templates in your templates/myapp folder. Here is a brief description of each:
-
-register.html: Contains the form for registering a new user.
-login.html: Contains the login form.
-index.html: The main page, displaying a table of the top 10 coins.
-portfolio.html: Displays the user's portfolio, including their balance and a table of their wallets with each coin's current value.
-trade.html: Contains a form for entering the symbol of a cryptocurrency, displaying its current price, and allowing the user to proceed to the buy page.
-sell.html: Displays a form for entering the amount of coins the user wants to sell.
-error.html: Displays error codes and messages.
-layout.html: A template for the layout of all pages, including the navbar and any other views that appear on all pages.
-Static files
-Your static/myapp folder includes the following files:
-
-styles.css: Defines some of the styles used on the website.
-app.js: Contains JavaScript code that adds dynamic styles to the website.
 
 
 ## Files:
